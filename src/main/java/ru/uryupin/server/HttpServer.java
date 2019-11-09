@@ -9,9 +9,7 @@ public class HttpServer {
     private static final int DEFAULT_PORT = 8080;
 
     public static void main(String[] args) {
-        ServerSocket serverSocket;
-        try {
-            serverSocket = new ServerSocket(DEFAULT_PORT);
+        try (ServerSocket serverSocket = new ServerSocket(DEFAULT_PORT)) {
             while (true) {
                 try {
                     Socket clientSocket = serverSocket.accept();
